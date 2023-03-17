@@ -5,7 +5,158 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>RBTown Generator</title>
-  <link href="https://roblox-town-gen.onrender.com/cdn/legacy/style/css" rel="stylesheet" type="text/css" />
+<style>
+/*************************************/
+/**************** MAIN ***************/
+/*************************************/
+
+html, body {
+    width: 99%;
+    height: 95%;
+    background-color: rgb(54, 57, 63);
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200&display=swap');
+
+  * {
+    transition: 1s all;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 25px;
+  }
+  
+  .top {
+    display: flex;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    width: 100%;
+    height: 90%;
+  }
+  
+  .attachments {
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 25%;
+    height: 100%;
+    border-radius: 50px;
+    background-color: rgb(64, 68, 75);  
+    overflow-y:scroll;
+    text-align: center;
+  }
+  .sidebar {
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 100%;
+    height: 90%;
+  }
+  .weapons {
+    border-radius: 50px;
+    background-color: rgb(64, 68, 75);
+    margin-bottom: 2%;
+    width: 100%;
+    height: 54%;
+    overflow-y:scroll;
+    text-align: center;
+  }
+  .armor {
+    border-radius: 50px;
+    background-color: rgb(64, 68, 75);
+    width: 100%;
+    height: 54%;
+    overflow-y:scroll;
+    text-align: center;
+  }
+  
+  .result {
+    margin-left: 1%;
+    margin-right: 2%;
+    width: 100%;
+    height: 10%;
+    border-radius: 50px;
+    background-color: rgb(64, 68, 75);
+    text-align: center;
+    overflow-y:scroll;
+    border: 0px;
+    resize: none;
+  }
+
+  .resultbut {
+    border: 0px;
+    opacity: 1;
+    width: 100%;
+    height: 10%;
+  }
+
+  ::-webkit-scrollbar{
+    opacity: 0;
+  }
+
+  .bottom {
+    text-align: center;
+    display: flex;
+    width: 100%;
+  }
+.save, .load {
+  background-color: rgb(185, 187, 190);
+  width: 25%;
+  height: 4%;
+  margin: 1%;
+  border: 0px;
+  border-radius: 25px;
+}
+.inpl {
+  margin: 1%;
+  background-color: rgb(185, 187, 190);
+  width: 35%;
+  height: 4%;
+  border: 0px;
+  border-radius: 25px;
+}
+  
+/*************************************/
+/**************** LIST ***************/
+/*************************************/
+  
+  .list-object {
+    margin: 0.2%;
+    border: 0px;
+    width: 98%;
+    height: 10%;
+    border-radius: 50px;
+    background-color: rgb(185, 187, 190); 
+  }
+  .attachments .list-object {
+    height: 2.5% !important;
+    margin: 1%;
+  }
+
+  .list-object:hover {
+    background-color: rgb(47, 49, 54); 
+  }
+  .list-object:active {
+    background-color: rgb(46, 51, 56); 
+  }
+
+  .aclist-object {
+    margin: 0.2%;
+    border: 0px;
+    width: 98%;
+    height: 10%;
+    border-radius: 50px;
+    background-color: rgb(78, 77, 115)
+  }
+  .attachments .aclist-object {
+    height: 2.5% !important;
+    margin: 1%;
+  }
+
+.Copied {
+  background-color: green;
+}
+
+
+
+
+</style>
   <script src="https://roblox-town-gen.onrender.com/cdn/legacy/script/js" defer></script>
 </head>
 

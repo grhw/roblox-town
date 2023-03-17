@@ -1,10 +1,78 @@
 <!DOCTYPE html>
-<html lang="en" style="background-color: black; background: url('background.jpg') no-repeat; background-size: cover;">
+<html lang="en" style="background-color: black; background: url('https://roblox-town-gen.onrender.com/cdn/background/jpg') no-repeat; background-size: cover;">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Roblox Town</title>
-    <link href="https://roblox-town-gen.onrender.com/cdn/main/css" rel="stylesheet">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+* {
+    font-family: 'Noto Sans', sans-serif;
+    color: white;
+}
+body {
+    text-align: center;
+}
+.background {
+    margin: 25vh;
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(5px);
+    border-radius: 1em;
+    border: solid black 2px !important;
+}
+button {
+    color: black;
+    border: 0px;
+    background-color: lightskyblue;
+    font-size: 1em;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: lightseagreen;
+}
+
+button:active {
+    background-color: lightblue;
+}
+
+select {
+    background-color: transparent;
+    outline: none;
+}
+
+select option {
+    background: rgba(0, 0, 0, 0.3);
+    color: black
+}
+
+.list {
+    margin-top: 10px;
+    border-top: solid 2px black;
+}
+
+.item, .armor {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.attachments {
+    margin-top: 0.5em;
+}
+
+.generation {
+    border-top: solid 2px black;
+}
+
+ion-icon {
+    color: black;
+    height: 1em;
+    width: 1em;
+    transform: translateY(10%) scale(110%);
+
+}
+    </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml">
 </head>
