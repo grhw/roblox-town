@@ -27,6 +27,6 @@ def getlegacy(test,ex):
 def keepalive():
     while True:
         print(requests.get("https://roblox-town-gen.onrender.com/").status_code)
-        sleep(5)
+        sleep(60)
 
 threading.Thread(target=keepalive).start()
