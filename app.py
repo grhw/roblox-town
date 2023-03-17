@@ -2,6 +2,7 @@ from markupsafe import escape
 from flask import Response
 from flask import Flask
 from time import sleep
+import threading
 import requests
 
 app = Flask(__name__)
@@ -23,7 +24,9 @@ def get(test,ex):
 def getlegacy(test,ex):
     return open(f"./html/legacy/{test}.{ex}","r").read()
 
+def keepalive():
+    while True:
+        print(requests.get("https://roblox-town-gen.onrender.com/").status_code)
+        sleep(5)
 
-while True:
-    print(requests.get("https://roblox-town-gen.onrender.com/legacy/").status_code)
-    sleep(5)
+threading.Thread(target=keepalive).start()
