@@ -25,7 +25,7 @@ def getlegacy(test,ex):
     return open(f"./html/legacy/{test}.{ex}","r").read()
 
 @app.route('/cdn/img/<test>/<ex>')
-def getlegacy(test,ex):
+def getimg(test,ex):
     return send_file(f"./html/{test}.{ex}")
 
 def keepalive():
