@@ -45,10 +45,6 @@ select option {
     border-top: solid 2px black;
 }
 
-.itemselect {
-    
-}
-
 .item, .armor {
     margin-top: 1em;
     margin-bottom: 1em;
