@@ -11,5 +11,5 @@ def main():
     return open("./html/index.html")
 
 @app.route('/legacy/')
-def main():
+def legacy():
     return open("./html/legacy/index.html")
