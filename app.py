@@ -8,8 +8,8 @@ app = Flask(__name__)
 @app.route('/')
 def main():
     requests.get("https://roblox-town-gen.onrender.com/legacy/")
-    return open("./html/index.html")
+    return open("./html/index.html","r").read()
 
 @app.route('/legacy/')
 def legacy():
-    return open("./html/legacy/index.html")
+    return open("./html/legacy/index.html","r").read()
