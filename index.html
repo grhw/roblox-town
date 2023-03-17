@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color: black; background: url('background.jpg') no-repeat; background-size: cover;">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Roblox Town</title>
+    <link href="main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml">
+</head>
+<body style="background: transparent;">
+    <section style="display:none;" class="dumpster">
+        <div class="item">
+            <button class="removeitem"><ion-icon name="close-circle-outline"></ion-icon> Remove</button>
+            <select class="itemselect">
+                <option value="" disabled selected>Weapons</option>
+            </select>
+            <button class="addattachments"><ion-icon name="add-circle-outline"></ion-icon> Add Attachments</button>
+            <div class="attachments">
+                <div class="attach">
+                    <select class="attachselect">
+                        <option value="" disabled selected>Attachments</option>
+                    </select>
+                    <button class="removeattachments"><ion-icon name="close-circle-outline"></ion-icon> Remove</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="armor">
+            <button class="removearmor"><ion-icon name="close-circle-outline"></ion-icon> Remove</button>
+            <select class="armorselect">
+                <option value="" disabled selected>Armor</option>
+            </select>
+        </div>
+    </section>
+    <section class="background">
+        <h1>Roblox Town Generator</h1>
+        <button style="display:none;"><ion-icon name="dice-outline"></ion-icon> Randomize All Items in Loadout</button>
+        <br><br>
+        <radio>
+            <input type="radio" name="selection" value="setspawn">
+            <label for="setspawn">!setspawn</label>
+            <input type="radio" name="selection" value="spawn">
+            <label for="spawn">!spawn</label>
+        </radio>
+        <br><br>
+        <button class="addweapons"><ion-icon name="hammer-outline"></ion-icon> Add Weapons</button> <button class="addarmor"><ion-icon name="shield-half-outline"></ion-icon> Add Armor</button>
+        <div class="list">     
+        </div>
+        <button class="generate"><ion-icon name="build-outline"></ion-icon> Generate</button>
+        <p class="generation">
+            
+        </p>
+    </section>
+    <script src="script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

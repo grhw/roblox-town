@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+* {
+    font-family: 'Noto Sans', sans-serif;
+    color: white;
+}
+body {
+    text-align: center;
+}
+.background {
+    margin: 25vh;
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(5px);
+    border-radius: 1em;
+    border: solid black 2px !important;
+}
+button {
+    color: black;
+    border: 0px;
+    background-color: lightskyblue;
+    font-size: 1em;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: lightseagreen;
+}
+
+button:active {
+    background-color: lightblue;
+}
+
+select {
+    background-color: transparent;
+    outline: none;
+}
+
+select option {
+    background: rgba(0, 0, 0, 0.3);
+    color: black
+}
+
+.list {
+    margin-top: 10px;
+    border-top: solid 2px black;
+}
+
+.itemselect {
+    
+}
+
+.item, .armor {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.attachments {
+    margin-top: 0.5em;
+}
+
+.generation {
+    border-top: solid 2px black;
+}
+
+ion-icon {
+    color: black;
+    height: 1em;
+    width: 1em;
+    transform: translateY(10%) scale(110%);
+
+}
