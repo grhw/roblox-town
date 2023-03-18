@@ -140,7 +140,7 @@ const addweapons = document.querySelector(".addweapons")
 const addarmor = document.querySelector(".addarmor")
 const list = document.querySelector(".list")
 
-addweapons.addEventListener("click", () => {
+const newweapon = () => {
     const item = itemtemplate.cloneNode(true)
     item.querySelector(".attach").remove()
     list.appendChild(item)
@@ -159,9 +159,11 @@ addweapons.addEventListener("click", () => {
     })
     const duplicateitem = item.querySelector(".duplicateitem")
     duplicateitem.addEventListener("click", () => {
-        list.appendChild(item.cloneNode(true))
+        newweapon()
     })
-})
+}
+
+addweapons.addEventListener("click", newweapon)
 
 addarmor.addEventListener("click", () => {
     const armor = armortemplate.cloneNode(true)
