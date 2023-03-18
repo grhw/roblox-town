@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" style="background-color: black; background: url('https://roblox-town-gen.onrender.com/cdn/img/background/jpg') no-repeat; background-size: cover;">
+<html lang="en" style="background-color: black; background: url('https://roblox-town-gen.onrender.com/cdn/img/background/png') repeat-y; background-size: cover; transition: 1s;">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Roblox Town</title>
     <style>
+    
+@keyframes appear {
+    0% {
+        transform: scaleY(0%) translateY(-100%);
+        margin-top: 0em;
+        margin-bottom: 0em;
+        height: 0;
+    }
+    100% {
+        
+    }
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 * {
     font-family: 'Noto Sans', sans-serif;
@@ -55,6 +68,7 @@ select option {
 .item, .armor {
     margin-top: 1em;
     margin-bottom: 1em;
+    animation: appear 0.6s;
 }
 
 .attachments {
@@ -63,6 +77,10 @@ select option {
 
 .generation {
     border-top: solid 2px black;
+}
+
+.attach {
+    animation: appear 0.6s;
 }
 
 ion-icon {
