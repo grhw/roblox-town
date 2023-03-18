@@ -157,6 +157,10 @@ addweapons.addEventListener("click", () => {
             attach.remove()
         })
     })
+    const duplicateitem = item.querySelector(".duplicateitem")
+    duplicateitem.addEventListener("click", () => {
+        list.appendChild(item.cloneNode(true))
+    })
 })
 
 addarmor.addEventListener("click", () => {
