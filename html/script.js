@@ -83,34 +83,6 @@ QBU-88
 Dragunov SVD
 TMP
 
---: Ammo :--
-
-Twin 9x19mm Parabellum
-FN 5.7x28mm
-.30-30 Winchester
-.308 Winchester
-.44 Magnum
-.45 ACP
-.50 Action Express
-12 Gauge
-4.6x30mm
-5.56x45mm NATO
-7.62x39mm
-7.92x57mm Mauser
-8 Gauge
-9x19mm Parabellum
-9x39mm
-FN 5.7x28mm Pistol
-.50 BMG
-.40 S&W
-9x19mm Parabellum Rifle
-7.62x51mm NATO
-7.62x39mm M43
-9x21mm Gyurza
-.40 S&W Rifle
-.357 Magnum
-.45 ACP Rifle
-
 --: Other :--
 
 Wrench
