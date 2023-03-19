@@ -164,7 +164,7 @@ const addoptioninselect = (sel,name) => {
     elmnt.innerHTML = name
     sel.appendChild(elmnt)
     if (name.includes("--:")||(name == "")) {
-        elmnt.setAttribute("disabled")
+        elmnt.setAttribute("disabled","disabled")
     }
 }
 
