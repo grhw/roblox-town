@@ -28,9 +28,4 @@ def getlegacy(test,ex):
 def getimg(test,ex):
     return send_file(f"./html/{test}.{ex}")
 
-def keepalive():
-    while True:
-        print(requests.get("https://roblox-town-gen.onrender.com/").status_code)
-        sleep(60)
-
-threading.Thread(target=keepalive).start()
+app.run(port=7858)

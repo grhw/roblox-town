@@ -1,25 +1,50 @@
-var Attachments = `Suppressor
-Heavy Suppressor
-Green Laser
-CL6X Sight
-Compensator
-Hunting Scope
-EOTech Sight
-Ergo Grip
-Extended Stock
-Flash Hider
-Folding Grip
-ACOG Sight
-Flashlight
-Angled Grip
+var Attachments = `--: SCOPES AND SIGHTS :--
+ 
 Coyote Sight
+Hunting Scope
+ACOG Sight
+CL6X Sight
+EOTech Sight
 JGM4 Sight
-PSO-1 Scope
 Kobra Sight
-M145 Sight
+PSO-1 Scope
+Holosun507c
+Acog Scope
+M145
+AEMS
+SRS
+
+--: GRIPS :--
+
+Angled Grip
+Folding Grip
+Bipod
+Extended Stock (SMGs/Pistols only)
+DD Grip
+Ergo Grip
+Strike
+Seelite
+Skeleton
+
+--: BARREL :--
+
+Compensator
+Flash Hider
+Osprey Suppresor
+Heavy Suppressor
+Suppressor
 Wide Choke
+Muzzlebreak
+TAA Muzzlebrake
+
+--: OTHER :--
+
+Flashlight
+Blue Laser
+Green Laser
 Red Laser
-Bipod`.split("\n")
+Rangefinder
+Ngal`.split("\n")
 var Armor = `--: Armor :--
 
 Robes
@@ -39,88 +64,78 @@ GRU
 --: Gamepass :--
 
 Rusky`.split("\n")
-var Weapons = `--: Guns :--
+var Weapons = `--: AUTOMATIC RIFLES :--
 
-Tumor Growth
-L85A2
-M1911
-Steyr Elite
-M4
-MP443
-MP7
-UMP-40
-MG4
-Remington 870
-RFB
-Saddlegun
-Glock-18
-Desert Eagle
 AK-47
-M16A3
-CZ-75
-L96A1
-AS VAL
-Five SeveN
+AUGA3
+FAMASG2
 G36C
-M9
-P226
-P90
-RPK-74M
-SR-2
-Magnum Revolver
-SKS
-MAC-10
-AUG A3
 HK416
-Makarov
-FAMAS F1
-JNG-90
-CheyTac M200
-MK-11
+L85A2
+M16A1
+M4
 QBZ-95
-MP5K
+ASVAL
+MP40
+MCX
+SG-552
+
+--: SNIPER RIFLES  :--
+
+RFB
+model-1777
 QBU-88
-Dragunov SVD
+CheyTac M200
+JNG-90
+L96A1
+SteyrElite
+DragunovSVD
+
+--: DESIGNATED MARKSMAN RIFLES  :--
+
+AR-10
+SKS
+MK-11
+M110
+M1 Garand
+
+--: LIGHT MACHINE GUNS MG4 :--
+
+RPK-74M
+Lewis
+
+--: SUBMACHINE GUNS  :--
+
+MAC-10
+MP5K
+MP7
+MPX
+P90
+SR-2
+UMP-45
 TMP
+Uzi
 
---: Other :--
+--: SHOTGUNS  :--
 
-Wrench
-Laptop
-Mask
-NV Goggles
-Balaclava
-Ballistics Helmet
-Ballistics Vest
-Bandage
-Medkit
-Hammer
-Pickaxe
-Fire axe
-Defibrillator
+Remington870
+Saiga
+Saddlegun
 
---: Gamepass :--
+--: PISTOLS  :--
 
-Groza-4
-Classic Pistol
-Barrett M82A3
-Riot Shield
-PP2000
-Cowboy Gun
-Double Barrel
-SPAS-12
-UNICA 6
-Akimbo M9
-Luger P08
-Ithaca 37 Stakeout
-KRISS Vector
-Shovel
-Fail
-SCAR-H
-UTS-15
-FN FAL
-M1921 Thompson
-Walther WA2000`.split("\n")
+M9
+CZ-75
+DesertEagle
+FiveSeven
+Glock-18C
+Glock-19
+M1911
+MP443
+Makarov
+P226
+Magnum Revolver
+USP Match`.split("\n")
 
 const itemtemplate = document.querySelector(".dumpster .item")
 const armortemplate = document.querySelector(".dumpster .armor")
