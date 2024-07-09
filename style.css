@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+html {
+    background: url(background.png) !important;
+    background-repeat: repeat-y;
+    background-position: center;
+    background-size: cover;
+}
+
+* {
+    font-family: 'Noto Sans', sans-serif;
+    color: white;
+}
+
+h2 {
+    font-size: 10px;
+    transform: translateY(-200%);
+}
+
+:root {
+    --main-color: #BEF7FE;
+    --secondary-color: #0ABEDF;
+    --third-color: #0277D4;
+    --last-color: rgba(4, 47, 90,0.75);
+}
+
+.background {
+    left: 50vw;
+    top: 50vh;
+    width: 50vw;
+    height: 100%;
+    display: block;
+    position: relative;
+    text-align: center;
+    transform: translateY(-50%)translateX(-50%);
+    backdrop-filter: blur(25px);
+    border: solid white 3px;
+    border-radius: 15px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+}
+
+.dropdown {
+    border-radius: 100vw;
+    background-color: var(--third-color);
+    border: solid white 2px;
+    margin-right: 5px;
+    display: inline-block;
+    width: 20%;
+}
+
+.selections {
+    display: block;
+    background-color: var(--last-color);
+    position: absolute;
+    border: solid white 2px;
+    border-radius: 15px;
+    margin-top: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transform: translateX(-2px);
+    width: inherit;
+    height: max-content;
+    backdrop-filter: blur(15px);
+}
+
+button:not(.dropdowntext) {
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: solid white 2px;
+    background-color: var(--secondary-color);
+    border-radius: 100vw;
+}
+
+button:hover {
+    filter: brightness(75%);
+}
+
+.dropdowntext {
+    width: 100%;
+    display: block;
+    background-color: transparent;
+    border: none;;
+}
+
+.section {
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: solid white 1px;
+    border-bottom: solid white 1px;
+}

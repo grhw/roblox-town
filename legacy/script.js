@@ -1,232 +1,251 @@
-var Attachments = `ACOG Sight
-Angled Grip
-Bipod
-CL6X Sight
-Compensator
+var Attachments = `--: SCOPES AND SIGHTS :--
+ 
 Coyote Sight
-EOTech Sight
-Ergo Grip
-Extended Stock
-Flash Hider
-Flashlight
-Folding Grip
-Green Laser
-Heavy Suppressor
 Hunting Scope
+ACOG Sight
+CL6X Sight
+EOTech Sight
 JGM4 Sight
 Kobra Sight
-M145 Sight
 PSO-1 Scope
-Red Laser
+Holosun507c
+Acog Scope
+M145
+AEMS
+SRS
+
+--: GRIPS :--
+
+Angled Grip
+Folding Grip
+Bipod
+Extended Stock (SMGs/Pistols only)
+DD Grip
+Ergo Grip
+Strike
+Seelite
+Skeleton
+
+--: BARREL :--
+
+Compensator
+Flash Hider
+Osprey Suppresor
+Heavy Suppressor
 Suppressor
-Wide Choke`
-var Armor = `COM
-FBI
-GRU
-HCS
-RGF
-Riot
+Wide Choke
+Muzzlebreak
+TAA Muzzlebrake
+
+--: OTHER :--
+
+Flashlight
+Blue Laser
+Green Laser
+Red Laser
+Rangefinder
+Ngal`.split("\n")
+var Armor = `--: Armor :--
+
 Robes
-Robes2
-SAS
-Slav
-SWAT
 Tenor
+Robes2
+HCS
+COM
+SWAT
+FBI
+RGF
+Slav
+Riot
 VDV
-Rusky (GAMEPASS)`
-var Weapons = `AK-47
-AS VAL
-AUG A3
-CheyTac M200
-CZ-75
-Desert Eagle
-Dragunov SVD
-FAMAS F1
-Five SeveN
+SAS
+GRU
+
+--: Gamepass :--
+
+Rusky`.split("\n")
+var Weapons = `--: AUTOMATIC RIFLES :--
+
+AK-47
+AUGA3
+FAMAS G2
 G36C
-Glock-18
 HK416
-JNG-90
 L85A2
-L96A1
-M16A3
-M1911
+M16A1
 M4
-M9
-MAC-10
-Magnum Revolver
-Makarov
-MG4
+QBZ-95
+ASVAL
+MP40
+MCX
+SG-552
+
+--: SNIPER RIFLES  :--
+
+RFB
+Model-1777 Musket
+QBU-88
+CheyTac M200
+JNG-90
+L96A1
+Steyr Elite
+Dragunov SVD
+
+--: DESIGNATED MARKSMAN RIFLES  :--
+
+AR-10
+SKS
 MK-11
-MP443
+M110
+M1 Garand
+
+--: LIGHT MACHINE GUNS MG4 :--
+
+RPK-74M
+Lewis
+
+--: SUBMACHINE GUNS  :--
+
+MAC-10
 MP5K
 MP7
-P226
+MPX
 P90
-QBU-88
-QBZ-95
-Remington 870
-RFB
-RPK-74M
-Saddlegun
-SKS
 SR-2
-Steyr Elite
+UMP-45
 TMP
-Tumor Growth
-UMP-40
-Balaclava
-Ballistics Helmet
-Ballistics Vest
-Bandage
-Defibrillator
-Fire axe
-Hammer
-Laptop (Drone)
-Mask
-Medkit
-NV Goggles
-Pickaxe
-Wrench
-Akimbo M9 (GAMEPASS)
-Barrett M82A3 (GAMEPASS)
-Classic Pistol (GAMEPASS)
-Cowboy Gun (GAMEPASS)
-Double Barrel (GAMEPASS)
-Fail (GAMEPASS)
-FN FAL (GAMEPASS)
-Groza-4 (GAMEPASS)
-Ithaca 37 Stakeout (GAMEPASS)
-KRISS Vector (GAMEPASS)
-Luger P08 (GAMEPASS)
-M1921 Thompson (GAMEPASS)
-PP2000 (GAMEPASS)
-Riot Shield (GAMEPASS)
-SCAR-H (GAMEPASS)
-Shovel (GAMEPASS) 
-SPAS-12(GAMEPASS)
-UNICA 6 (GAMEPASS)
-UTS-15 (GAMEPASS)
-Walther WA2000 (GAMEPASS)`
-var res = ""
-//Attachments = Attachments.split("\n").sort((a, b) => a.length - b.length)
-//Weapons = Weapons.split("\n").sort((a, b) => a.length - b.length)
-//Armor = Armor.split("\n").sort((a, b) => a.length - b.length)
-Attachments = Attachments.split("\n").sort()
-Weapons = Weapons.split("\n").sort()
-Armor = Armor.split("\n").sort()
+Uzi
 
+--: SHOTGUNS  :--
 
-function select() {
-  this.classList.toggle("list-object")
-  this.classList.toggle("aclist-object")
+Remington870
+Saiga
+Saddlegun
 
-  var eqwep = document.querySelectorAll(".weapons .aclist-object")
-  var att = document.querySelectorAll(".attachments .aclist-object")
-  var arm = document.querySelectorAll(".armor .aclist-object")
-  res = ""
-  for (let i = 0; i < eqwep.length; i++) {
-    res = res + "!spawn " + eqwep[i].innerHTML.split(" ")[0]
-    for (let i = 0; i < att.length; i++) {
-      res = res + "+" + att[i].innerHTML.split(" ")[0]
+--: PISTOLS  :--
+
+M9
+CZ-75
+DesertEagle
+FiveSeven
+Glock-18C
+Glock-19
+M1911
+MP443
+Makarov
+P226
+Magnum Revolver
+USP Match`.split("\n")
+
+const itemtemplate = document.querySelector(".dumpster .item")
+const armortemplate = document.querySelector(".dumpster .armor")
+
+const itemselect = itemtemplate.querySelector(".itemselect")
+const attachselect = itemtemplate.querySelector(".attachselect")
+const attachtemplate = itemtemplate.querySelector(".attach")
+
+const armorselect = armortemplate.querySelector(".armorselect")
+
+const addoptioninselect = (sel,name) => {
+    const elmnt = document.createElement("option")
+    elmnt.innerHTML = name
+    sel.appendChild(elmnt)
+    if (name.includes("--:")||(name == "")) {
+        elmnt.setAttribute("disabled","disabled")
     }
-    res = res + "\n"
-  }
-
-  for (let i = 0; i < arm.length; i++) {
-    res = res + "\n!spawnarmor " + arm[i].innerHTML.split(" ")[0]
-
-  }
-  var out = document.getElementsByClassName("result")[0]
-  out.value = res
-  out.classList.remove("Copied")
 }
-function select2(e) {
-  e.classList.toggle("list-object")
-  e.classList.toggle("aclist-object")
 
-  var eqwep = document.querySelectorAll(".weapons .aclist-object")
-  var att = document.querySelectorAll(".attachments .aclist-object")
-  var arm = document.querySelectorAll(".armor .aclist-object")
-  res = ""
-  for (let i = 0; i < eqwep.length; i++) {
-    res = res + "!spawn " + eqwep[i].innerHTML.split(" ")[0]
-    for (let i = 0; i < att.length; i++) {
-      res = res + "+" + att[i].innerHTML.split(" ")[0]
+for (let i = 0;i < Weapons.length;i++) {
+    addoptioninselect(itemselect, Weapons[i])
+}
+
+for (let i = 0;i < Attachments.length;i++) {
+    addoptioninselect(attachselect, Attachments[i])
+}
+
+for (let i = 0;i < Armor.length;i++) {
+    addoptioninselect(armorselect, Armor[i])
+}
+
+const addweapons = document.querySelector(".addweapons")
+const addarmor = document.querySelector(".addarmor")
+const list = document.querySelector(".list")
+
+const newweapon = () => {
+    const item = itemtemplate.cloneNode(true)
+    item.querySelector(".attach").remove()
+    list.appendChild(item)
+    const attachments = item.querySelector(".attachments")
+    const removeweapon = item.querySelector(".removeitem")
+    removeweapon.addEventListener("click", () => {
+        item.remove()
+    })
+    const addattach = item.querySelector(".addattachments")
+    addattach.addEventListener("click", () => {
+        const attach = attachtemplate.cloneNode(true)
+        attachments.appendChild(attach)
+        attach.querySelector(".removeattachments").addEventListener("click", () => {
+            attach.remove()
+        })
+    })
+    const duplicateitem = item.querySelector(".duplicateitem")
+    duplicateitem.addEventListener("click", () => {
+        newweapon()
+    })
+}
+
+addweapons.addEventListener("click", newweapon)
+
+addarmor.addEventListener("click", () => {
+    const armor = armortemplate.cloneNode(true)
+    list.appendChild(armor)
+    const removearmor = armor.querySelector(".removearmor")
+    removearmor.addEventListener("click", () => {
+        armor.remove()
+    })
+})
+
+const radiosetspawn = document.querySelector("input[value=\"setspawn\"]")
+const radiospawn = document.querySelector("input[value=\"spawn\"]")
+const generation = document.querySelector(".generation")
+
+radiosetspawn.checked = true
+
+
+document.querySelector(".generate").addEventListener("click", () => {
+    const items = document.querySelectorAll(".list .item")
+    const armor = document.querySelectorAll(".list .armor")
+    if (radiosetspawn.checked == true) {
+        var final = ""
+        for (let i = 0;i < items.length;i++) {
+            const select = items[i].querySelector(".itemselect")
+            const attachs = items[i].querySelectorAll(".attach")
+            final = final + " " + select.value.replace(" ","").substring(0,5)
+            for (let x = 0;x < attachs.length;x++) {
+                const attachselect = attachs[x].querySelector(".attachselect")
+                final = final + "+" + attachselect.value.split(" ")[0]
+            }
+        }
+        for (let i = 0;i < armor.length;i++) {
+            const select = armor[i].querySelector(".armorselect")
+            final = final + " " + select.value.split(" ")[0]
+        }
+        generation.innerHTML = "!setspawn " + final
+    } else {
+        var final = ""
+        for (let i = 0;i < items.length;i++) {
+            const select = items[i].querySelector(".itemselect")
+            const attachs = items[i].querySelectorAll(".attach")
+            final = final + "<br>!spawn " + select.value.replace(" ","").substring(0,5)
+            for (let x = 0;x < attachs.length;x++) {
+                const attachselect = attachs[x].querySelector(".attachselect")
+                final = final + "+" + attachselect.value.split(" ")[0]
+            }
+        }
+        for (let i = 0;i < armor.length;i++) {
+            const select = armor[i].querySelector(".armorselect")
+            final = final + "<br>!spawnarmor " + select.value.split(" ")[0]
+        }
+        generation.innerHTML = final
     }
-    res = res + "\n"
-  }
-
-  for (let i = 0; i < arm.length; i++) {
-    res = res + "\n!spawnarmor " + arm[i].innerHTML.split(" ")[0]
-
-  }
-  var out = document.getElementsByClassName("result")[0]
-  out.value = res
-  out.classList.remove("Copied")
-}
-
-for (let i = 0; i < Attachments.length; i++) {
-  var tag = document.createElement("button");
-  var text = document.createTextNode(Attachments[i]);
-  tag.appendChild(text);
-  var element = document.getElementsByClassName("attachments")[0]
-  element.appendChild(tag);
-  tag.classList.add('list-object')
-  tag.classList.add(tag.innerHTML.replaceAll(" ", "-"))
-  tag.onclick = select
-}
-for (let i = 0; i < Weapons.length; i++) {
-  var tag = document.createElement("button");
-  var text = document.createTextNode(Weapons[i]);
-  tag.appendChild(text);
-  var element = document.getElementsByClassName("weapons")[0]
-  element.appendChild(tag);
-  tag.classList.add('list-object')
-  tag.classList.add(tag.innerHTML.replaceAll(" ", "-"))
-  tag.onclick = select
-}
-for (let i = 0; i < Armor.length; i++) {
-  var tag = document.createElement("button");
-  var text = document.createTextNode(Armor[i]);
-  tag.appendChild(text);
-  var element = document.getElementsByClassName("armor")[0]
-  element.appendChild(tag);
-  tag.classList.add('list-object')
-  tag.classList.add(tag.innerHTML.replaceAll(" ", "-"))
-  tag.onclick = select
-};
-
-function selectText() {
-  const copyText = document.getElementById('result');
-  copyText.select();
-  copyText.setSelectionRange(0, 99999);
-  navigator.clipboard.writeText(copyText.value);
-  copyText.classList.add("Copied")
-}
-
-var save = document.getElementsByClassName("save")[0]
-var load = document.getElementsByClassName("load")[0]
-var inpl = document.getElementsByClassName("inpl")[0]
-
-save.onclick = function() {
-  var actlist = document.querySelectorAll(".aclist-object")
-  data = ""
-  for (let i = 0; i < actlist.length; i++) {
-    data = data + actlist[i].innerHTML + ","
-    console.log(actlist[i])
-  }
-  localStorage.setItem(inpl.value, data)
-  console.log(data)
-}
-load.onclick = function() {
-  var actlist = document.querySelectorAll(".aclist-object")
-  data = localStorage.getItem(inpl.value).split(",")
-  for (let i = 0; i < actlist.length; i++) {
-    select2(actlist[i])
-  }
-  for (let i = 0; i < data.length - 1; i++) {
-    select2(document.getElementsByClassName(data[i].replaceAll(" ", "-"))[0])
-  }
-  console.log(data)
-}
+})
