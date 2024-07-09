@@ -1,3 +1,15 @@
+@keyframes appear {
+    0% {
+        transform: scaleY(0%) translateY(-100%);
+        margin-top: 0em;
+        margin-bottom: 0em;
+        height: 0;
+    }
+    100% {
+        
+    }
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 * {
     font-family: 'Noto Sans', sans-serif;
@@ -11,7 +23,7 @@ body {
     background-color: rgba(255, 255, 255, 0);
     backdrop-filter: blur(5px);
     border-radius: 1em;
-    border: solid black 2px !important;
+    border: solid white 2px !important;
 }
 button {
     color: black;
@@ -42,12 +54,14 @@ select option {
 
 .list {
     margin-top: 10px;
-    border-top: solid 2px black;
+    padding-top: 15px;
+    border-top: solid 2px white;
 }
 
 .item, .armor {
     margin-top: 1em;
     margin-bottom: 1em;
+    animation: appear 0.6s;
 }
 
 .attachments {
@@ -55,7 +69,12 @@ select option {
 }
 
 .generation {
-    border-top: solid 2px black;
+    padding-top: 15px;
+    border-top: solid 2px white;
+}
+
+.attach {
+    animation: appear 0.6s;
 }
 
 ion-icon {
@@ -64,4 +83,9 @@ ion-icon {
     width: 1em;
     transform: translateY(10%) scale(110%);
 
+}
+
+::-webkit-scrollbar {
+    opacity: 0;
+    width: 0;
 }
