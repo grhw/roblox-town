@@ -68,7 +68,7 @@ var Weapons = `--: AUTOMATIC RIFLES :--
 
 AK-47
 AUGA3
-FAMASG2
+FAMAS G2
 G36C
 HK416
 L85A2
@@ -83,13 +83,13 @@ SG-552
 --: SNIPER RIFLES  :--
 
 RFB
-model-1777
+Model-1777 Musket
 QBU-88
 CheyTac M200
 JNG-90
 L96A1
-SteyrElite
-DragunovSVD
+Steyr Elite
+Dragunov SVD
 
 --: DESIGNATED MARKSMAN RIFLES  :--
 
@@ -220,7 +220,7 @@ document.querySelector(".generate").addEventListener("click", () => {
         for (let i = 0;i < items.length;i++) {
             const select = items[i].querySelector(".itemselect")
             const attachs = items[i].querySelectorAll(".attach")
-            final = final + " " + select.value.split(" ")[0]
+            final = final + " " + select.value.replace(" ","").substring(0,5)
             for (let x = 0;x < attachs.length;x++) {
                 const attachselect = attachs[x].querySelector(".attachselect")
                 final = final + "+" + attachselect.value.split(" ")[0]
@@ -236,7 +236,7 @@ document.querySelector(".generate").addEventListener("click", () => {
         for (let i = 0;i < items.length;i++) {
             const select = items[i].querySelector(".itemselect")
             const attachs = items[i].querySelectorAll(".attach")
-            final = final + "<br>!spawn " + select.value.split(" ")[0]
+            final = final + "<br>!spawn " + select.value.replace(" ","").substring(0,5)
             for (let x = 0;x < attachs.length;x++) {
                 const attachselect = attachs[x].querySelector(".attachselect")
                 final = final + "+" + attachselect.value.split(" ")[0]
