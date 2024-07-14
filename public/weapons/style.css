@@ -91,3 +91,8 @@ button:hover {
     border-top: solid white 1px;
     border-bottom: solid white 1px;
 }
+
+.tip {
+    margin: 0;
+    margin-bottom: -20px;
+}
