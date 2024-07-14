@@ -22,6 +22,7 @@ tips = [
     "Also try Horrific Housing",
     "Also try Twenty One",
     "The code to the Terminal 2nd chapter last room is 3482. :)",
+    "'The only way to stop me now is to uninstall!'"
 ]
 
 document.querySelector(".tip i").innerHTML = tips[Math.round(Math.random()*tips.length)]
