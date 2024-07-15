@@ -68,7 +68,7 @@ export const items = {
             "USP Match"
         ]
     },
-    "Armor": {
+    "NoAttachments": {
         "Armor": [
             "COM",
             "FBI",
@@ -88,6 +88,18 @@ export const items = {
             "Ballistics Vest",
             "Ballistics Helmet",
             "Balaclava"
+        ],
+        "Utilities": [
+            "NV Goggles (night vision)",
+            "balaclava (a mask that will hide your nickname)",
+            "Defibrillator",
+            "Bandage",
+            "Medkit",
+            "Wrench (for armor repair)",
+            "Pickaxe",
+            "Fireaxe",
+            "Hammer",
+            "Gas Mask ( Does absolutly nothing)"
         ]
     }
 }

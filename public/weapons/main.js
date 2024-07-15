@@ -1,5 +1,17 @@
 import { items, attachments } from './weapons.js'; 
-        
+
+var shortenAttachmentNames = false
+
+var shAtt = document.querySelector(".shorten-att")
+shAtt.onclick = ()=>{
+    shortenAttachmentNames =! shortenAttachmentNames
+
+    shAtt.innerHTML = "[ ] Shorten attachments names"
+    if (shortenAttachmentNames) {
+        shAtt.innerHTML = "[X] Shorten attachments names"
+    }
+}
+
 function initDropdown(dropdown,callback) {
     var on = false;
     console.log(dropdown)
@@ -25,27 +37,68 @@ function initDropdown(dropdown,callback) {
 const template = '<span class="dropdown [ID]"><button class="dropdowntext">[NAME]</button><span class="selections" style="display: none;">[DROP]</span></span>'
 const weapon_template = '<div class="entry [ID]"><button class="remove">Remove</button> <!--<button class="duplicate">Duplicate</button> --><span>[NAME]</span> <button class="addattach">Add Attachment</button><div class="attachments"></div></div>'
 const attachment_template = '<span class="att [ID]">[ATTACH] <button class="remove">Remove</button><br></span>'
+
+function lazySimplify(text,max) {
+    return text.replaceAll(" ","").toLowerCase().substring(0,max)
+}
+
+function sorter(a,b) {
+    if (a.hasAttribute("weapon-type")) {
+        if (a.getAttribute("weapon-type") > b.getAttribute("weapon-type")) {
+            return 1
+        } else if (a.getAttribute("weapon-type") < b.getAttribute("weapon-type")) {
+            return -1
+        }
+    }
+    if (a.innerText > b.innerText) {
+        return 1
+    } else if (a.innerText < b.innerText) {
+        return -1
+    }
+    return 0
+}
+
+function sort() {
+    let sorted = Array.from(document.querySelectorAll(".entry")).sort(sorter)
+    var creations = document.querySelector(".creations")
+    sorted.forEach(element => {
+        creations.appendChild(element)
+        let attachments = Array.from(element.querySelectorAll(".att")).sort(sorter)
+        var attContainer = element.querySelector(".attachments")
+
+        attachments.forEach(e2 => {
+            attContainer.appendChild(e2)
+        })
+    });
+}
+
 function update() {
+    sort()
     var entries = document.querySelectorAll(".entry")
     var weapons = ""
     var armors = ""
     entries.forEach((a)=>{
-        if (a.querySelector(".addattach") == null) {
-            armors += a.querySelector("span").innerText + " "
+        if (a.classList.contains("armor")) {
+            armors += lazySimplify(a.querySelector("span").innerText,5) + " "
         } else {
-            var wep = ""
-            wep = a.querySelector("span").innerText.replaceAll(" ","").toLowerCase().substring(0,5)
+            var wep = lazySimplify(a.querySelector("span").innerText,5)
             var atts = a.querySelector(".attachments").querySelectorAll("span")
             atts.forEach((e)=>{
                 if (e.innerHTML.includes("Remove")) {
-                    wep = wep + "+" + e.innerText.split(" <button")[0].split(" ")[0]
+                    var toAdd = e.innerText.split(" <button")[0].split(" ")[0].toLowerCase()
+                    if (shortenAttachmentNames) {
+                        toAdd = lazySimplify(toAdd,3)
+                    }
+                    wep = wep + "+" + toAdd
                 }
             })
             weapons += wep + ' '
         }
     })
     document.querySelector(".weaponry").innerHTML = weapons
-    document.querySelector(".armor").innerHTML = armors
+    if (document.querySelector(".armor").innerHTML != armors) {
+        document.querySelector(".armor").innerHTML = armors
+    }
 }
 
 function createDropdown(parent,name,items,callback) {
@@ -64,12 +117,15 @@ function createDropdown(parent,name,items,callback) {
     initDropdown(document.querySelector(".dropdown." + id),callback)
 }
 
-function createWeapon(name,canHasAttachments) {
+function createWeapon(name,canHasAttachments,itemType) {
     var weapon = document.createElement("div")
     const id = "w" +Math.round(Date.now()*1000)
+    const wpt = itemType.replaceAll(" ","-").toLowerCase()
     document.querySelector(".creations").appendChild(weapon)
     weapon.outerHTML = weapon_template.replace("[NAME]",name).replace("[ID]",id)
     weapon = document.querySelector("." + id)
+    weapon.classList.add(wpt)
+    weapon.setAttribute("weapon-type",wpt)
     if (!canHasAttachments) {
         weapon.querySelector(".addattach").remove()
     } else {
@@ -108,8 +164,9 @@ Object.keys(items).forEach((categoryName) => {
     document.querySelector(".background").appendChild(categoryElement)
     Object.keys(category).forEach((itemType) => {
         const items = category[itemType]
+        console.log(items)
         createDropdown(categoryElement,itemType,items,(e)=>{
-            createWeapon(e,!(itemType == "Armor"))
+            createWeapon(e,!(categoryName == "NoAttachments"),itemType)
         })
     });
 });

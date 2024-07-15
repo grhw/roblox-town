@@ -38,8 +38,13 @@ for curtype in items.keys():
 
 final = {
     "Guns": items["Guns"],
-    "Armor": items["Armor"],
+    "NoAttachments": {
+        "Armor": items["Armor"]["Armor"],
+        "Utilities": items["Utilities"]["Utilities"]
+    },
 }
+
+print(items['Armor'])
 
 with open("./public/weapons/weapons.js","w+") as f:
     f.write(f'export const items = {json.dumps(final,indent=4)}\n\n\nexport const attachments = {json.dumps(items["Modifications"],indent=4)}')
