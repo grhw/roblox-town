@@ -1,175 +1,151 @@
 import { items, attachments } from './weapons.js'; 
 
-var shortenAttachmentNames = false
+let shortenAttachmentNames = false;
 
-var shAtt = document.querySelector(".shorten-att")
-shAtt.onclick = ()=>{
-    shortenAttachmentNames =! shortenAttachmentNames
+const shAtt = document.querySelector(".shorten-att");
+shAtt.onclick = () => {
+    shortenAttachmentNames = !shortenAttachmentNames;
+    shAtt.innerHTML = shortenAttachmentNames ? "[X] Shorten attachments names" : "[ ] Shorten attachments names";
+};
 
-    shAtt.innerHTML = "[ ] Shorten attachments names"
-    if (shortenAttachmentNames) {
-        shAtt.innerHTML = "[X] Shorten attachments names"
-    }
-}
-
-function initDropdown(dropdown,callback) {
-    var on = false;
-    console.log(dropdown)
-    var text = dropdown.querySelector(".dropdowntext")
-    var selections = dropdown.querySelector(".selections")
-    text.onclick = ()=>{
-        on = !on
-        if (on) {
-            selections.style.display = "block"
-        } else {
-            selections.style.display = "none"
-        }
-    }
+function initDropdown(dropdown, callback) {
+    let on = false;
+    const text = dropdown.querySelector(".dropdowntext");
+    const selections = dropdown.querySelector(".selections");
+    text.onclick = () => {
+        on = !on;
+        selections.style.display = on ? "block" : "none";
+    };
 
     selections.querySelectorAll("button").forEach(selection => {
-        selection.onclick = ()=>{
-            selections.style.display = "none"
+        selection.onclick = () => {
+            selections.style.display = "none";
             on = false;
-            callback(selection.innerText)
-        }
+            callback(selection.innerText);
+        };
     });
 }
-const template = '<span class="dropdown [ID]"><button class="dropdowntext">[NAME]</button><span class="selections" style="display: none;">[DROP]</span></span>'
-const weapon_template = '<div class="entry [ID]"><button class="remove">Remove</button> <!--<button class="duplicate">Duplicate</button> --><span>[NAME]</span> <button class="addattach">Add Attachment</button><div class="attachments"></div></div>'
-const attachment_template = '<span class="att [ID]">[ATTACH] <button class="remove">Remove</button><br></span>'
 
-function lazySimplify(text,max) {
-    return text.replaceAll(" ","").toLowerCase().substring(0,max)
+const template = '<span class="dropdown [ID]"><button class="dropdowntext">[NAME]</button><span class="selections" style="display: none;">[DROP]</span></span>';
+const weapon_template = '<div class="entry [ID]"><button class="remove">Remove</button> <!--<button class="duplicate">Duplicate</button> --><span>[NAME]</span> <button class="addattach">Add Attachment</button><div class="attachments"></div></div>';
+const attachment_template = '<span class="att [ID]">[ATTACH] <button class="remove">Remove</button><br></span>';
+
+function lazySimplify(text, max) {
+    return text.replaceAll(" ", "").toLowerCase().substring(0, max);
 }
 
-function sorter(a,b) {
-    if (a.hasAttribute("weapon-type")) {
-        if (a.getAttribute("weapon-type") > b.getAttribute("weapon-type")) {
-            return 1
-        } else if (a.getAttribute("weapon-type") < b.getAttribute("weapon-type")) {
-            return -1
-        }
+function sorter(a, b) {
+    const aType = a.getAttribute("weapon-type");
+    const bType = b.getAttribute("weapon-type");
+    if (aType && bType) {
+        return aType.localeCompare(bType);
     }
-    if (a.innerText > b.innerText) {
-        return 1
-    } else if (a.innerText < b.innerText) {
-        return -1
-    }
-    return 0
+    return a.innerText.localeCompare(b.innerText);
 }
 
 function sort() {
-    let sorted = Array.from(document.querySelectorAll(".entry")).sort(sorter)
-    var creations = document.querySelector(".creations")
+    const sorted = Array.from(document.querySelectorAll(".entry")).sort(sorter);
+    const creations = document.querySelector(".creations");
     sorted.forEach(element => {
-        creations.appendChild(element)
-        let attachments = Array.from(element.querySelectorAll(".att")).sort(sorter)
-        var attContainer = element.querySelector(".attachments")
-
+        creations.appendChild(element);
+        const attachments = Array.from(element.querySelectorAll(".att")).sort(sorter);
+        const attContainer = element.querySelector(".attachments");
         attachments.forEach(e2 => {
-            attContainer.appendChild(e2)
-        })
+            attContainer.appendChild(e2);
+        });
     });
 }
 
 function update() {
-    sort()
-    var entries = document.querySelectorAll(".entry")
-    var weapons = ""
-    var armors = ""
-    entries.forEach((a)=>{
+    sort();
+    const entries = document.querySelectorAll(".entry");
+    let weapons = "";
+    let armors = "";
+    entries.forEach(a => {
+        const name = lazySimplify(a.querySelector("span").innerText, 5);
         if (a.classList.contains("armor")) {
-            armors += lazySimplify(a.querySelector("span").innerText,5) + " "
+            armors += name + " ";
         } else {
-            var wep = lazySimplify(a.querySelector("span").innerText,5)
-            var atts = a.querySelector(".attachments").querySelectorAll("span")
-            atts.forEach((e)=>{
+            let wep = name;
+            const atts = a.querySelector(".attachments").querySelectorAll("span");
+            atts.forEach(e => {
                 if (e.innerHTML.includes("Remove")) {
-                    var toAdd = e.innerText.split(" <button")[0].split(" ")[0].toLowerCase()
+                    let toAdd = e.innerText.split(" <button")[0].split(" ")[0].toLowerCase();
                     if (shortenAttachmentNames) {
-                        toAdd = lazySimplify(toAdd,3)
+                        toAdd = lazySimplify(toAdd, 3);
                     }
-                    wep = wep + "+" + toAdd
+                    wep += "+" + toAdd;
                 }
-            })
-            weapons += wep + ' '
+            });
+            weapons += wep + ' ';
         }
-    })
-    document.querySelector(".weaponry").innerHTML = weapons
-    if (document.querySelector(".armor").innerHTML != armors) {
-        document.querySelector(".armor").innerHTML = armors
-    }
-}
-
-function createDropdown(parent,name,items,callback) {
-    const id = "c" +Math.round(Date.now()*1000) + name.replaceAll(" ","")
-    var dropdown = document.createElement("span")
-
-    parent.appendChild(dropdown)
-
-    var buttons = ""
-    items.forEach(item => {
-        buttons += `<button>${item}</button><br>`
     });
-
-    dropdown.outerHTML = template.replace("[ID]",id).replace("[NAME]",name).replace("[DROP]",buttons)
-    console.log(id)
-    initDropdown(document.querySelector(".dropdown." + id),callback)
+    document.querySelector(".weaponry").innerHTML = weapons;
+    const armorElement = document.querySelector(".armor");
+    if (armorElement.innerHTML !== armors) {
+        armorElement.innerHTML = armors;
+    }
 }
 
-function createWeapon(name,canHasAttachments,itemType) {
-    var weapon = document.createElement("div")
-    const id = "w" +Math.round(Date.now()*1000)
-    const wpt = itemType.replaceAll(" ","-").toLowerCase()
-    document.querySelector(".creations").appendChild(weapon)
-    weapon.outerHTML = weapon_template.replace("[NAME]",name).replace("[ID]",id)
-    weapon = document.querySelector("." + id)
-    weapon.classList.add(wpt)
-    weapon.setAttribute("weapon-type",wpt)
+function createDropdown(parent, name, items, callback) {
+    const id = "c" + Math.round(Date.now() * 1000) + name.replaceAll(" ", "");
+    const dropdown = document.createElement("span");
+    parent.appendChild(dropdown);
+
+    const buttons = items.map(item => `<button>${item}</button><br>`).join('');
+    dropdown.outerHTML = template.replace("[ID]", id).replace("[NAME]", name).replace("[DROP]", buttons);
+    initDropdown(document.querySelector(".dropdown." + id), callback);
+}
+
+function createWeapon(name, canHasAttachments, itemType) {
+    const weapon = document.createElement("div");
+    const id = "w" + Math.round(Date.now() * 1000);
+    const wpt = itemType.replaceAll(" ", "-").toLowerCase();
+    document.querySelector(".creations").appendChild(weapon);
+    weapon.outerHTML = weapon_template.replace("[NAME]", name).replace("[ID]", id);
+    const weaponElement = document.querySelector("." + id);
+    weaponElement.classList.add(wpt);
+    weaponElement.setAttribute("weapon-type", wpt);
+
     if (!canHasAttachments) {
-        weapon.querySelector(".addattach").remove()
+        weaponElement.querySelector(".addattach").remove();
     } else {
-        weapon.querySelector(".addattach").onclick = ()=>{
-            var container = document.createElement("div")
-            const a_id = "a" + Math.round(Date.now()*1000)
-            container.classList.add(a_id)
-            weapon.querySelector(".attachments").appendChild(container)
-            Object.keys(attachments).forEach((attachType) => {
-                const attachs = attachments[attachType]
-                createDropdown(container,attachType,attachs,(r)=>{
-                    container.outerHTML = attachment_template.replace("[ATTACH]",r).replace("[ID]",a_id)
-                    container = document.querySelector(".att." + a_id)
-                    container.querySelector(".remove").onclick = ()=>{
-                        container.remove()
-                    }
-                })
-            }
-        )}
+        weaponElement.querySelector(".addattach").onclick = () => {
+            const container = document.createElement("div");
+            const a_id = "a" + Math.round(Date.now() * 1000);
+            container.classList.add(a_id);
+            weaponElement.querySelector(".attachments").appendChild(container);
+            Object.keys(attachments).forEach(attachType => {
+                const attachs = attachments[attachType];
+                createDropdown(container, attachType, attachs, r => {
+                    container.outerHTML = attachment_template.replace("[ATTACH]", r).replace("[ID]", a_id);
+                    const newContainer = document.querySelector(".att." + a_id);
+                    newContainer.querySelector(".remove").onclick = () => {
+                        newContainer.remove();
+                    };
+                });
+            });
+        };
     }
-    weapon.querySelector(".remove").onclick = ()=>{
-        weapon.remove()
-    }
-    //weapon.querySelector(".duplicate").onclick = ()=>{
-    //    createWeapon(name,canHasAttachments)
-    //}
-    return weapon
+    weaponElement.querySelector(".remove").onclick = () => {
+        weaponElement.remove();
+    };
+    return weaponElement;
 }
 
-console.log(attachments)
-
-Object.keys(items).forEach((categoryName) => {
-    const category = items[categoryName]
-    var categoryElement = document.createElement("div")
-    categoryElement.classList.add("section")
-    document.querySelector(".background").appendChild(categoryElement)
-    Object.keys(category).forEach((itemType) => {
-        const items = category[itemType]
-        console.log(items)
-        createDropdown(categoryElement,itemType,items,(e)=>{
-            createWeapon(e,!(categoryName == "NoAttachments"),itemType)
-        })
+Object.keys(items).forEach(categoryName => {
+    const category = items[categoryName];
+    const categoryElement = document.createElement("div");
+    categoryElement.classList.add("section");
+    document.querySelector(".background").appendChild(categoryElement);
+    Object.keys(category).forEach(itemType => {
+        const items = category[itemType];
+        createDropdown(categoryElement, itemType, items, e => {
+            createWeapon(e, categoryName !== "NoAttachments", itemType);
+        });
     });
 });
-document.onclick = ()=>{
-    update()
-}
+
+document.onclick = () => {
+    update();
+};
