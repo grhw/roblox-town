@@ -9,6 +9,7 @@ export const items = {
             "L85A2",
             "M16A1",
             "M4",
+            "MK-17",
             "QBZ-95",
             "ASVAL",
             "MP40",
@@ -27,14 +28,16 @@ export const items = {
         ],
         "Designated Marksman Rifles": [
             "AR-10",
+            "AR-15",
             "SKS",
             "MK-11",
             "M110",
-            "M1 Garand"
+            "M1g"
         ],
         "Light Machine Guns": [
             "MG4",
-            "RPK-74M",
+            "RPK",
+            "RPK-74",
             "Lewis"
         ],
         "Submachine Guns": [
@@ -51,21 +54,21 @@ export const items = {
         "Shotguns": [
             "Remington870",
             "Saiga",
-            "Saddlegun"
+            "Saddle"
         ],
         "Pistols": [
             "M9",
             "CZ-75",
-            "Desert Eagle",
-            "Five Seven",
+            "Desert",
+            "Five",
             "Glock-18C",
             "Glock-19",
             "M1911",
             "MP443",
             "Makarov",
             "P226",
-            "Magnum Revolver",
-            "USP Match"
+            "Magnum",
+            "USP"
         ]
     },
     "NoAttachments": {

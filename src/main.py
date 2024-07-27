@@ -21,6 +21,7 @@ for elem in selected:
         current_type = elem.text.title()
         items[current_type] = {}
         current_category = current_type
+        items[current_type][current_category] = []
         print("#--:", current_type, ":--#")
     elif elem.tag_name == "h3":
         current_category = elem.text.title()
