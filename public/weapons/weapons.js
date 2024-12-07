@@ -2,6 +2,10 @@ export const items = {
     "Guns": {
         "Automatic Rifles": [
             "AK-47",
+            "MK17CQC",
+            "SOPMOD Block II",
+            "ak-15",
+            "M16A2",
             "AUGA3",
             "FAMASG2",
             "G36C",
@@ -9,7 +13,6 @@ export const items = {
             "L85A2",
             "M16A1",
             "M4",
-            "MK-17",
             "QBZ-95",
             "ASVAL",
             "MP40",
@@ -18,7 +21,7 @@ export const items = {
         ],
         "Sniper Rifles": [
             "RFB",
-            "model-1777",
+            "Model1777 Musket",
             "QBU-88",
             "Chey Tac M200",
             "JNG-90",
@@ -32,12 +35,11 @@ export const items = {
             "SKS",
             "MK-11",
             "M110",
-            "M1g"
+            "M1 Garand"
         ],
         "Light Machine Guns": [
             "MG4",
-            "RPK",
-            "RPK-74",
+            "RPK-74M",
             "Lewis"
         ],
         "Submachine Guns": [
@@ -54,21 +56,21 @@ export const items = {
         "Shotguns": [
             "Remington870",
             "Saiga",
-            "Saddle"
+            "Saddlegun"
         ],
         "Pistols": [
             "M9",
             "CZ-75",
-            "Desert",
-            "Five",
+            "Desert Eagle",
+            "Five Seven",
             "Glock-18C",
-            "Glock-19",
+            "Glock-19X",
             "M1911",
             "MP443",
             "Makarov",
             "P226",
-            "Magnum",
-            "USP"
+            "Magnum Revolver",
+            "USP Match"
         ]
     },
     "NoAttachments": {
@@ -90,19 +92,20 @@ export const items = {
             "Britan",
             "Ballistics Vest",
             "Ballistics Helmet",
-            "Balaclava"
+            "Balaclava",
+            "Pa"
         ],
         "Utilities": [
-            "NV Goggles (night vision)",
-            "balaclava (a mask that will hide your nickname)",
-            "Defibrillator",
+            "Balaclava (hides your username)",
             "Bandage",
-            "Medkit",
-            "Wrench (for armor repair)",
-            "Pickaxe",
+            "Defibrillator",
             "Fireaxe",
+            "Gas Mask (only cosmetic)",
             "Hammer",
-            "Gas Mask ( Does absolutly nothing)"
+            "Medkit",
+            "NV Goggles (when equipped, press N to toggle night vision)",
+            "Pickaxe",
+            "Wrench (repairs armor)"
         ]
     }
 }
@@ -119,7 +122,7 @@ export const attachments = {
         "Kobra Sight",
         "PSO-1 Scope",
         "Holosun507c",
-        "Acog  Scope",
+        "Acog Scope",
         "M145",
         "AEMS",
         "SRS"
@@ -127,16 +130,19 @@ export const attachments = {
     "Grips": [
         "Angled Grip",
         "Folding Grip",
+        "hera",
+        "offset",
         "Bipod",
-        "Extended Stock (for SM Gs and pistols only)",
-        "DD  Grip",
-        "Ergo  Grip",
+        "Extended Stock (for (some) SM Gs and pistols only)",
+        "DD Grip",
+        "Ergo Grip",
         "Strike",
         "Seelite",
         "skeleton"
     ],
     "Barrel": [
         "Compensator",
+        "mk23",
         "Flash Hider",
         "Osprey Suppresor",
         "Heavy Suppressor",
@@ -150,7 +156,7 @@ export const attachments = {
         "Blue Laser",
         "Green Laser",
         "Red Laser",
-        "Rangefinder",
+        "Range Finder",
         "Ngal (  Flashlight and laser hit \"G\" in game to change it)"
     ]
 }
