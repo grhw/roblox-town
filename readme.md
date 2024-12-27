@@ -5,7 +5,7 @@ Scrapes the wiki to update items.
 "backend" stuff (run before pushing/publishing/deploying to website)
 
 ## /pubilc/
-[website itself](https://osage-chan.github.io/roblox-town/weapons/)
+[website itself](https://guhw.dev/roblox-town/weapons/)
 
 ## /legacy/
 old stuff that shouldnt be used anymore
