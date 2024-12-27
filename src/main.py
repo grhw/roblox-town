@@ -46,7 +46,7 @@ final = {
 
 print(items.get("Armor", {}))
 
-with open("./public/weapons/weapons.js", "w") as f:
+with open("./weapons/weapons.js", "w") as f:
     f.write(
         f'export const items = {json.dumps(final, indent=4)}\n\n\nexport const attachments = {json.dumps(items.get("Modifications", {}), indent=4)}'
     )
